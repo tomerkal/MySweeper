@@ -3,11 +3,18 @@ var gameOver = false;
 
 var placeMines = function() {
     const cells = document.getElementsByClassName("cell");
-    for (var i = 0; i < cells.length; i++) {
-        if (Math.random() < 0.1) {
-            cells[i].classList.add("mine")
-            cells[i].innerHTML = "X";
-        }
+    const minesI = [];
+
+    // Get unique random indexes to place the mines
+    while (minesI.length < Math.ceil(cells.length*0.1)) {
+        var I = Math.floor(Math.random() * cells.length);
+        if (minesI.indexOf(I) === -1) minesI.push(I);
+    }
+
+    // Set the cells with mines according to the indexes in the minesI array
+    for (var i = 0; i < minesI.length; i++) {
+        cells[minesI[i]].classList.add("mine")
+        cells[minesI[i]].innerHTML = "X";
     }
 };
 
