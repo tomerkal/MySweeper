@@ -1,3 +1,7 @@
+span {
+   font-family: Arial, Helvetica, sans-serif;
+}
+
 #grid {
     display: grid;
     grid-template-columns: repeat(3, 30px);
