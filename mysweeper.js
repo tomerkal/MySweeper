@@ -71,6 +71,7 @@ placeMines();
 placeNums();
 
 var resetBoard = function() {
+    document.getElementById('text').innerHTML = "";
     for (var i = 0; i < cells.length; i++) {
         cells[i].className = 'cell';
         cells[i].innerHTML = '';
@@ -99,7 +100,7 @@ var clickCell = function() {
     this.classList.add('visible');
 
     if (this.classList.contains('mine')) {
-        document.body.append("Game Over");
+        document.getElementById('text').innerHTML = "Game Over";
         gameOver = true;
         return;
     }
