@@ -5,7 +5,8 @@ Created using HTML, CSS and JavaScript.
 
 ### Currently supported
 
-- Left click to reveal, right-click for flag
+- Left click to reveal, right-click for flag.
+  - A flag can't be revealed. Right-click again to undo.
 - Auto-reveal all cells surrounding an empty cell.
 - Stop game when mine is hit.
 
@@ -16,4 +17,4 @@ In no particular order:
 - [ ] Add counter of remaining mines.
 - [ ] Add checker for finished game (according to revealed tiles, not flags)
 - [ ] Add timer.
-- [ ] Make sure no empty board is generated.
+- [x] Make sure no empty board is generated.
