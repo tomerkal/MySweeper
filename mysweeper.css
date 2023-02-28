@@ -1,0 +1,25 @@
+#grid {
+    display: grid;
+    grid-template-columns: repeat(3, 30px);
+    grid-template-rows: repeat(3, 30px);
+}
+
+.cell {
+    background: LightBlue;
+    font-size: 0;
+    border: 1px solid Blue;
+    padding: 10px;
+}
+
+.visible {
+    font-size: 16px;
+    background: Grey;
+}
+
+.flag {
+    background: yellow;
+}
+
+.visible.mine {
+    background: Red;
+}
