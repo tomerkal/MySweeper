@@ -16,6 +16,6 @@ In no particular order:
 - [ ] Take size of board from user input.
 - [x] Add difficulty selection by the user.
 - [ ] Add counter of remaining mines.
-- [ ] Add checker for finished game (according to revealed tiles, not flags)
+- [x] Add checker for finished game (according to revealed tiles, not flags)
 - [ ] Add timer.
 - [x] Make sure no empty board is generated.
