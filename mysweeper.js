@@ -7,8 +7,11 @@ var placeMines = function() {
     const minesI = [];
 
     // Get unique random indexes to place the mines
-    const difficulty = document.getElementById("diff").value
-    mines_count = Math.ceil(cells.length*difficulty)
+    const difficulty = document.getElementById("diff").value;
+    mines_count = Math.ceil(cells.length*difficulty);
+    const mines_text = document.getElementById("mines");
+    mines_text.setAttribute("data-mines", mines_count);
+    mines_text.innerHTML = "Mines left: " + mines_count;
     hidden = N*N
     while (minesI.length < mines_count) {
         var I = Math.floor(Math.random() * cells.length);
@@ -17,7 +20,7 @@ var placeMines = function() {
 
     // Set the cells with mines according to the indexes in the minesI array
     for (var i = 0; i < minesI.length; i++) {
-        cells[minesI[i]].classList.add("mine")
+        cells[minesI[i]].classList.add("mine");
         cells[minesI[i]].innerHTML = "X";
     }
 };
@@ -97,8 +100,18 @@ var clickFlag = function() {
     if (gameOver) return;
     if (this.classList.contains('visible')) return;
 
-    if (this.classList.contains('flag')) this.classList.remove('flag');
-    else this.classList.add('flag');
+    mines_text = document.getElementById("mines");
+    const mines_count = Number(mines_text.getAttribute("data-mines"));
+    if (this.classList.contains('flag')) {
+        this.classList.remove('flag');
+        mines_text.setAttribute("data-mines", mines_count + 1);
+        mines_text.innerHTML = "Mines left: " + (mines_count + 1);
+    }
+    else {
+        this.classList.add('flag');
+        mines_text.setAttribute("data-mines", mines_count - 1);
+        mines_text.innerHTML = "Mines left: " + (mines_count - 1);
+    }
 
     return false;
 };
