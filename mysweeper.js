@@ -1,4 +1,5 @@
 const N = 4;
+var hidden = N*N
 var gameOver = false;
 
 var placeMines = function() {
@@ -7,7 +8,9 @@ var placeMines = function() {
 
     // Get unique random indexes to place the mines
     const difficulty = document.getElementById("diff").value
-    while (minesI.length < Math.ceil(cells.length*difficulty)) {
+    mines_count = Math.ceil(cells.length*difficulty)
+    hidden = N*N
+    while (minesI.length < mines_count) {
         var I = Math.floor(Math.random() * cells.length);
         if (minesI.indexOf(I) === -1) minesI.push(I);
     }
@@ -106,6 +109,13 @@ var clickCell = function() {
     if (this.classList.contains('flag')) return;
 
     this.classList.add('visible');
+    hidden = hidden - 1;
+
+    if (hidden === mines_count) {
+        document.getElementById('text').innerHTML = "You Won!";
+        gameOver = true;
+        return;
+    }
 
     if (this.classList.contains('mine')) {
         document.getElementById('text').innerHTML = "Game Over";
