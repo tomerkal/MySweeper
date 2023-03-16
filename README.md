@@ -10,12 +10,13 @@ Created using HTML, CSS and JavaScript.
 - Auto-reveal all cells surrounding an empty cell.
 - Stop game when mine is hit.
 - Difficulty selection (easy/medium/hard) which changes the amount of mines.
+- Shows how many mines are left (according to marked flags).
 
 ### To Do
 In no particular order:
 - [ ] Take size of board from user input.
 - [x] Add difficulty selection by the user.
-- [ ] Add counter of remaining mines.
+- [x] Add counter of remaining mines.
 - [x] Add checker for finished game (according to revealed tiles, not flags)
 - [ ] Add timer.
 - [x] Make sure no empty board is generated.
