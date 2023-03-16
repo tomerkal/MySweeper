@@ -12,6 +12,7 @@ var placeMines = function() {
         if (minesI.indexOf(I) === -1) minesI.push(I);
     }
 
+    // Set the cells with mines according to the indexes in the minesI array
     for (var i = 0; i < minesI.length; i++) {
         cells[minesI[i]].classList.add("mine")
         cells[minesI[i]].innerHTML = "X";
