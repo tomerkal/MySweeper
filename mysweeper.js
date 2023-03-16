@@ -65,8 +65,16 @@ var placeNums = function() {
 };
 
 
+function setBoard() {
+    timer = setInterval(setTime, 1000);
+    resetBoard();
+}
+
 var resetBoard = function() {
     document.getElementById('text').innerHTML = "";
+    document.getElementById("seconds").innerHTML = "00";
+    document.getElementById("minutes").innerHTML = "00";
+
     const difficulty = document.getElementById("diff").value;
     N = Number(document.getElementById("size").value);
 
@@ -88,9 +96,13 @@ var resetBoard = function() {
         cells[i].oncontextmenu = clickFlag;
     }
     gameOver = false;
+    clearInterval(timer);
 
     placeMines(difficulty);
     placeNums();
+
+    totalSeconds = 0;
+    timer = setInterval(setTime, 1000);
 };
 
 var clickFlag = function() {
@@ -123,13 +135,13 @@ var clickCell = function() {
 
     if (hidden === mines_count) {
         document.getElementById('text').innerHTML = "You Won!";
-        gameOver = true;
+        endGame();
         return;
     }
 
     if (this.classList.contains('mine')) {
         document.getElementById('text').innerHTML = "Game Over";
-        gameOver = true;
+        endGame();
         return;
     }
 
@@ -141,5 +153,25 @@ var clickCell = function() {
     }
 };
 
+function setTime() {
+  ++totalSeconds;
+  document.getElementById("seconds").innerHTML = pad(totalSeconds % 60);
+  document.getElementById("minutes").innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+function endGame() {
+    gameOver = true;
+    clearInterval(timer);
+}
+
 document.getElementById('reset').addEventListener('click', resetBoard);
-resetBoard();
+setBoard();
