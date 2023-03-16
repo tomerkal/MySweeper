@@ -133,14 +133,14 @@ var clickCell = function() {
     this.classList.add('visible');
     hidden = hidden - 1;
 
-    if (hidden === mines_count) {
-        document.getElementById('text').innerHTML = "You Won!";
+    if (this.classList.contains('mine')) {
+        document.getElementById('text').innerHTML = "Game Over";
         endGame();
         return;
     }
 
-    if (this.classList.contains('mine')) {
-        document.getElementById('text').innerHTML = "Game Over";
+    if (hidden === mines_count) {
+        document.getElementById('text').innerHTML = "You Won!";
         endGame();
         return;
     }
