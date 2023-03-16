@@ -1,18 +1,16 @@
-const N = 4;
-var hidden = N*N
+const grid = document.getElementById("grid");
 var gameOver = false;
 
-var placeMines = function() {
+var placeMines = function(difficulty) {
     const cells = document.getElementsByClassName("cell");
     const minesI = [];
 
     // Get unique random indexes to place the mines
-    const difficulty = document.getElementById("diff").value;
     mines_count = Math.ceil(cells.length*difficulty);
     const mines_text = document.getElementById("mines");
     mines_text.setAttribute("data-mines", mines_count);
     mines_text.innerHTML = "Mines left: " + mines_count;
-    hidden = N*N
+    hidden = N*N;
     while (minesI.length < mines_count) {
         var I = Math.floor(Math.random() * cells.length);
         if (minesI.indexOf(I) === -1) minesI.push(I);
@@ -53,15 +51,11 @@ var getImmediateNeighbors = function(cell) {
 };
 
 var placeNums = function() {
-    let count;
-    let topRow = true;
-    bottomRow = false;
-
     for (var i = 0; i < cells.length; i++) {
         if (cells[i].classList.contains('mine')) continue;
 
         let neighbors = getImmediateNeighbors(cells[i]);
-        count = 0;
+        let count = 0;
         for (var j = 0; j < neighbors.length; j++) {
             count += neighbors[j].classList.contains('mine');
         }
@@ -71,28 +65,31 @@ var placeNums = function() {
 };
 
 
-const grid = document.getElementById("grid");
-grid.style.setProperty('grid-template-columns', 'repeat('+N+', 30px)');
-grid.style.setProperty('grid-template-rows', 'repeat('+N+', 30px)');
-for (var i = 0; i < N*N; i++) {
-    const newDiv = document.createElement("button");
-    newDiv.className = 'cell';
-
-    grid.appendChild(newDiv);
-}
-const cells = grid.getElementsByClassName("cell");
-placeMines();
-placeNums();
-
 var resetBoard = function() {
     document.getElementById('text').innerHTML = "";
+    const difficulty = document.getElementById("diff").value;
+    N = Number(document.getElementById("size").value);
+
+    grid.style.setProperty('grid-template-columns', 'repeat('+N+', 30px)');
+    grid.style.setProperty('grid-template-rows', 'repeat('+N+', 30px)');
+
+    grid.innerHTML = '';
+    for (var i = 0; i < N*N; i++) {
+        const cell = document.createElement("button");
+        cell.className = 'cell';
+
+        grid.appendChild(cell);
+    }
+    cells = grid.getElementsByClassName("cell");
     for (var i = 0; i < cells.length; i++) {
         cells[i].className = 'cell';
         cells[i].innerHTML = '';
+        cells[i].addEventListener('click', clickCell, false);
+        cells[i].oncontextmenu = clickFlag;
     }
     gameOver = false;
 
-    placeMines();
+    placeMines(difficulty);
     placeNums();
 };
 
@@ -144,9 +141,5 @@ var clickCell = function() {
     }
 };
 
-for (var i = 0; i < cells.length; i++) {
-    cells[i].addEventListener('click', clickCell, false);
-    cells[i].oncontextmenu = clickFlag;
-};
-
 document.getElementById('reset').addEventListener('click', resetBoard);
+resetBoard();

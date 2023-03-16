@@ -9,12 +9,12 @@ Created using HTML, CSS and JavaScript.
   - A flag can't be revealed. Right-click again to undo.
 - Auto-reveal all cells surrounding an empty cell.
 - Stop game when mine is hit.
-- Difficulty selection (easy/medium/hard) which changes the amount of mines.
+- Difficulty and size selection by the user (currently by fixed values).
 - Shows how many mines are left (according to marked flags).
 
 ### To Do
 In no particular order:
-- [ ] Take size of board from user input.
+- [x] Take size of board from user input.
 - [x] Add difficulty selection by the user.
 - [x] Add counter of remaining mines.
 - [x] Add checker for finished game (according to revealed tiles, not flags)
