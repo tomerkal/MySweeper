@@ -12,12 +12,17 @@ span {
     background: LightBlue;
     font-size: 0;
     border: 1px solid Blue;
+    border-radius: 2px;
     padding: 10px;
 }
 
 .visible {
     font-size: 16px;
-    background: Grey;
+    background: LightGrey;
+    outline: none;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+       -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+            box-shadow: inset 0px 0px 5px #c1c1c1;
 }
 
 .flag {
