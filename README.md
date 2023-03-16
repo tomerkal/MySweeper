@@ -11,6 +11,7 @@ Created using HTML, CSS and JavaScript.
 - Stop game when mine is hit.
 - Difficulty and size selection by the user (currently by fixed values).
 - Shows how many mines are left (according to marked flags).
+- Show timer.
 
 ### To Do
 In no particular order:
@@ -18,5 +19,5 @@ In no particular order:
 - [x] Add difficulty selection by the user.
 - [x] Add counter of remaining mines.
 - [x] Add checker for finished game (according to revealed tiles, not flags)
-- [ ] Add timer.
+- [x] Add timer.
 - [x] Make sure no empty board is generated.
