@@ -1,0 +1,69 @@
+body {
+	background-color: #cacaca;
+	text-align: center;
+	margin: 30px;
+	font-family: "Segoe Ui";
+}
+
+h1 {
+	background-color: #2a5aaa;
+	padding: 20px;
+	font-family: "Courier";
+	color: #ffffff;
+	text-align: center;
+}
+
+footer {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+footer div {
+	margin:30px;
+	background-color: #2a5aaa;
+	padding: 30px;
+}
+
+
+#grid {
+	margin-top: 12px;
+	margin-bottom: 20px;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(3, 30px);
+	grid-template-rows: repeat(3, 30px);
+}
+
+#mines {
+	color: #277757;
+	font-weight: bold;
+}
+
+#reset {
+	padding: 10px;
+}
+
+.cell {
+	background: LightBlue;
+	font-size: 0;
+	border: 1px solid #222222;
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.visible {
+	font-size: 16px;
+	background: LightGrey;
+	outline: none;
+	box-shadow: inset 0px 0px 5px #c1c1c1;
+}
+
+.flag {
+	background: yellow;
+}
+
+.visible.mine {
+	background: Red;
+}
